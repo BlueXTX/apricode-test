@@ -25,13 +25,23 @@ public class GamesService : IGamesService
         return await _context.Games.Where(x => x.Genres.Contains(genre)).ToListAsync();
     }
 
-    public Task<Game> UpdateGameAsync(int id, Game game)
+    public async Task<Game?> UpdateGameAsync(int id, Game game)
     {
-        throw new NotImplementedException();
+        var gameInDb = await _context.Games.FirstOrDefaultAsync(x => x.Id == id);
+        if (gameInDb == null) return null;
+
+        gameInDb.Name = game.Name;
+        gameInDb.Developer = game.Developer;
+        gameInDb.Genres = game.Genres;
+        await _context.SaveChangesAsync();
+        return gameInDb;
     }
 
-    public Task DeleteGameAsync(int id, Game game)
+    public async Task DeleteGameAsync(int id)
     {
-        throw new NotImplementedException();
+        var game = await _context.Games.FirstOrDefaultAsync(x => x.Id == id);
+        if (game == default) return;
+        _context.Games.Remove(game);
+        await _context.SaveChangesAsync();
     }
 }

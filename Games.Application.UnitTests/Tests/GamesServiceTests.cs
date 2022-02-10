@@ -4,6 +4,7 @@ using Games.Application.Interfaces;
 using Games.Application.Models.Entities;
 using Games.Application.Services;
 using Games.Application.UnitTests.Factories;
+using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 namespace Games.Application.UnitTests.Tests;
@@ -61,5 +62,34 @@ public class GamesServiceTests
         var actual = await service.GetGamesByGenreAsync(suitableGenre);
 
         actual.Should().Contain(expected).And.HaveCount(expected.Length);
+    }
+
+    [Fact]
+    private async Task UpdateGameAsyncTest()
+    {
+        var randomGame = GamesFactory.CreateRandomGame();
+        var gameInDb = (await _context.Games.AddAsync(randomGame)).Entity;
+
+        await _context.SaveChangesAsync();
+        var expected = GamesFactory.CreateRandomGame();
+        expected.Id = gameInDb.Id;
+
+        var service = new GamesService(_context);
+        var actual = await service.UpdateGameAsync(gameInDb.Id, expected);
+
+        expected.Should().BeEquivalentTo(actual);
+    }
+
+    [Fact]
+    private async Task DeleteGameAsyncTest()
+    {
+        var game = GamesFactory.CreateRandomGame();
+        game.Id = (await _context.Games.AddAsync(game)).Entity.Id;
+        await _context.SaveChangesAsync();
+
+        var service = new GamesService(_context);
+        await service.DeleteGameAsync(game.Id);
+
+        _context.Games.Should().NotContain(game);
     }
 }
