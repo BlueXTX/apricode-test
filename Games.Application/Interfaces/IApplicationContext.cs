@@ -7,5 +7,5 @@ public interface IApplicationContext
 {
     public DbSet<Game> Games { get; set; }
 
-    public Task SaveChangesAsync(CancellationToken cancellationToken);
+    public Task SaveChangesAsync(CancellationToken cancellationToken = default);
 }

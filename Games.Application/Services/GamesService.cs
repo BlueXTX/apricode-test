@@ -5,9 +5,18 @@ namespace Games.Application.Services;
 
 public class GamesService : IGamesService
 {
-    public Task<Game> CreateGameAsync(Game game)
+    private readonly IApplicationContext _context;
+
+    public GamesService(IApplicationContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
+    }
+
+    public async Task<Game> CreateGameAsync(Game game)
+    {
+        var result = await _context.Games.AddAsync(game);
+        await _context.SaveChangesAsync();
+        return result.Entity;
     }
 
     public Task<IEnumerable<Game>> GetGamesByGenreAsync(string genre)

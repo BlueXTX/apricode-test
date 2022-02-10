@@ -1,5 +1,8 @@
-﻿using System.Threading;
+﻿using System;
+using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
+using Games.Application.Configuration;
 using Games.Application.Interfaces;
 using Games.Application.Models.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +15,11 @@ public class TestApplicationContext : DbContext, IApplicationContext
 
     public TestApplicationContext(DbContextOptions<TestApplicationContext> options) : base(options)
     {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(DependencyInjection).Assembly);
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken)
