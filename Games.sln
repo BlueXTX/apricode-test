@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Application", "Games.Application\Games.Application.csproj", "{6A34671A-5E43-4DD1-BB30-5150CF2DD41F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\Games.Application", "src\Games.Application\Games.Application.csproj", "{6A34671A-5E43-4DD1-BB30-5150CF2DD41F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Application.UnitTests", "Games.Application.UnitTests\Games.Application.UnitTests.csproj", "{563A4CEC-257A-4038-AE10-CCEE17C4F32B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests\Games.Application.UnitTests", "tests\Games.Application.UnitTests\Games.Application.UnitTests.csproj", "{563A4CEC-257A-4038-AE10-CCEE17C4F32B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Infrastructure", "Games.Infrastructure\Games.Infrastructure.csproj", "{F6976C8A-94ED-48F2-9FC5-D08D2AB57502}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\Games.Infrastructure", "src\Games.Infrastructure\Games.Infrastructure.csproj", "{F6976C8A-94ED-48F2-9FC5-D08D2AB57502}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Api", "Games.Api\Games.Api.csproj", "{5177A764-D917-4881-8764-89B3711FCB1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\Games.Api", "src\Games.Api\Games.Api.csproj", "{5177A764-D917-4881-8764-89B3711FCB1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
