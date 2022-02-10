@@ -12,10 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Games.Application\Games.Application.csproj" />
       <ProjectReference Include="..\Games.Infrastructure\Games.Infrastructure.csproj" />
     </ItemGroup>

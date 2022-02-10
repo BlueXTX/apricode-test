@@ -20,6 +20,7 @@ public class ApplicationContext : DbContext, IApplicationContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(DependencyInjection).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(
+            typeof(Games.Application.DependencyInjection).Assembly);
     }
 }
