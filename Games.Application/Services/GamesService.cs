@@ -1,5 +1,6 @@
 ﻿using Games.Application.Interfaces;
 using Games.Application.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Games.Application.Services;
 
@@ -19,9 +20,9 @@ public class GamesService : IGamesService
         return result.Entity;
     }
 
-    public Task<IEnumerable<Game>> GetGamesByGenreAsync(string genre)
+    public async Task<IEnumerable<Game>> GetGamesByGenreAsync(string genre)
     {
-        throw new NotImplementedException();
+        return await _context.Games.Where(x => x.Genres.Contains(genre)).ToListAsync();
     }
 
     public Task<Game> UpdateGameAsync(int id, Game game)
