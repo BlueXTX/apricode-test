@@ -2,7 +2,7 @@
 using Games.Application.Models.Dto;
 using Games.Application.Models.Entities;
 
-namespace Games.Application.Profiles;
+namespace Games.Application.Mappings;
 
 public class GameProfile : Profile
 {
