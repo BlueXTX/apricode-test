@@ -22,7 +22,9 @@ public class GamesService : IGamesService
 
     public async Task<IEnumerable<Game>> GetGamesByGenreAsync(string genre)
     {
-        return await _context.Games.Where(x => x.Genres.Contains(genre)).ToListAsync();
+        return await _context.Games
+            .Where(x => x.Genres.Contains(genre, StringComparer.InvariantCultureIgnoreCase))
+            .ToListAsync();
     }
 
     public async Task<Game?> UpdateGameAsync(int id, Game game)
