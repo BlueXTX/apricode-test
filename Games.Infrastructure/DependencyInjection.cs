@@ -7,7 +7,7 @@ namespace Games.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddGamesInfrastructure(IServiceCollection services)
+    public static IServiceCollection AddGamesInfrastructure(this IServiceCollection services)
     {
         services.AddDbContext<ApplicationContext>(builder =>
             builder.UseInMemoryDatabase("Database"));

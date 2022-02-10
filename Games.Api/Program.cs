@@ -1,8 +1,13 @@
+using Games.Application;
+using Games.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddGamesApplication();
+builder.Services.AddGamesInfrastructure();
 
 var app = builder.Build();
 
